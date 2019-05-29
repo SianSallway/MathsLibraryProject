@@ -17,6 +17,8 @@ public:
 
 	void Update(float deltaTime);
 
+	void UpdateTransform();
+
 	virtual void OnDraw(aie::Renderer2D* renderer) { }
 
 	void Draw(aie::Renderer2D* renderer);
@@ -34,6 +36,18 @@ public:
 	const Matrix3& GetLocalTransform() const;
 
 	const Matrix3& GetGobalTransform() const;
+
+	void SetPosition(float x, float y);
+
+	void SetRotate(float radians);
+
+	void Rotate(float radians);
+
+	void SetScale(float width, float height);
+
+	void Scale(float width, float height);
+
+	void Translate(float x, float y);
 
 protected:
 

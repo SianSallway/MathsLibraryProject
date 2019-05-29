@@ -169,10 +169,12 @@
     <ClCompile Include="DemonstrationApp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneObject.cpp" />
+    <ClCompile Include="SpriteObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemonstrationApp.h" />
     <ClInclude Include="SceneObject.h" />
+    <ClInclude Include="SpriteObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\MathLib\MathLib.vcxproj">

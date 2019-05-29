@@ -93,12 +93,12 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsFuncLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathsFuncLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\s181585\source\repos\MathLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -129,14 +129,14 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsFuncLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathsFuncLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\s181585\source\repos\MathLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

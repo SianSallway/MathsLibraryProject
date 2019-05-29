@@ -61,6 +61,23 @@ void SceneObject::Update(float deltaTime)
 	}
 }
 
+void SceneObject::UpdateTransform()
+{
+	if (parent != nullptr)
+	{
+		globalTransform = parent->globalTransform * localTransform;
+	}
+	else
+	{
+		globalTransform = localTransform;
+	}
+
+	for (auto child : children)
+	{
+		child->UpdateTransform();
+	}
+}
+
 void SceneObject::Draw(aie::Renderer2D* renderer)
 {
 	//run OnDraw behaviour
@@ -81,4 +98,40 @@ const Matrix3& SceneObject::GetLocalTransform() const
 const Matrix3& SceneObject::GetGobalTransform() const
 {
 	return globalTransform;
+}
+
+void SceneObject::SetPosition(float x, float y)
+{
+	localTransform[2] = {x, y, 1};
+	UpdateTransform();
+}
+
+void SceneObject::SetRotate(float radians)
+{
+	localTransform.SetRotateZ(radians);
+	UpdateTransform();
+}
+
+void SceneObject::Rotate(float radians)
+{
+	localTransform.RotateZ(radians);
+	UpdateTransform();
+}
+
+void SceneObject::SetScale(float width, float height)
+{
+	localTransform.SetScaled(width, height, 1);
+	UpdateTransform();
+}
+
+void SceneObject::Scale(float width, float height)
+{
+	localTransform.Scale(width, height, 1);
+	UpdateTransform();
+}
+
+void SceneObject::Translate(float x, float y)
+{
+	//localTransform.Translate(x, y);
+	UpdateTransform();
 }
