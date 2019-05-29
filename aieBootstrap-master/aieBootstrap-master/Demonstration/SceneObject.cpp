@@ -72,3 +72,13 @@ void SceneObject::Draw(aie::Renderer2D* renderer)
 		child->Draw(renderer);
 	}
 }
+
+const Matrix3& SceneObject::GetLocalTransform() const
+{
+	return localTransform;
+}
+
+const Matrix3& SceneObject::GetGobalTransform() const
+{
+	return globalTransform;
+}

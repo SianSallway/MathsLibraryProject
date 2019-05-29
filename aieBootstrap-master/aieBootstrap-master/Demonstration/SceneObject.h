@@ -3,6 +3,7 @@
 #include <vector>
 #include "Renderer2D.h"
 #include"Font.h"
+#include "Matrix3.h"
 
 using namespace std;
 
@@ -30,10 +31,17 @@ public:
 	
 	void RemoveChild(SceneObject* child);
 
+	const Matrix3& GetLocalTransform() const;
+
+	const Matrix3& GetGobalTransform() const;
+
 protected:
 
 	SceneObject* parent = nullptr;
 	vector<SceneObject*> children;
+
+	Matrix3 localTransform = Matrix3::identity;
+	Matrix3 globalTransform = Matrix3::identity;
 
 };
 
