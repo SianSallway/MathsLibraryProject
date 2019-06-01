@@ -1,8 +1,9 @@
 #pragma once
-
+#include "SpriteObject.h"
+#include "SceneObject.h"
 #include "Application.h"
 #include "Renderer2D.h"
-
+//current
 class DemonstrationApp : public aie::Application {
 public:
 
@@ -19,4 +20,7 @@ protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
+
+	SpriteObject tank;
+	SpriteObject turret;
 };
