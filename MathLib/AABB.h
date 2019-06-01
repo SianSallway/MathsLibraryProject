@@ -23,5 +23,9 @@ public:
 
 	//returns the corners of the box 
 	vector<Vector2> Corners() const;
+
+	void Fit(const Vector2* points, unsigned int count);
+
+	void Fit(const vector<Vector2>&points);
 };
 
