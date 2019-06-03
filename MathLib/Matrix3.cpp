@@ -10,6 +10,9 @@ Matrix3::~Matrix3()
 {
 }
 
+//create a static const identity matrix
+const Matrix3 Matrix3::identity;// = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+
 // reference access so it can be modified
 Vector3& Matrix3::operator [] (int index)
 {

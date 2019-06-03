@@ -22,6 +22,9 @@ public:
 	Vector2 operator + (const Vector2& other) const;
 
 	//subtracting vectors
+	Vector2 operator - (const Vector2& other) const;
+
+	//subtracting vectors
 	Vector2& operator -= (const Vector2& other);
 
 	//scaling a vector
@@ -38,5 +41,10 @@ public:
 
 	//another way of computing magnitude of vector
 	float MagnitudeSquared()const;
+
+	//converts vector to unit length 
+	void Normalise();
+
+	Vector2 Normalised() const;
 };
 

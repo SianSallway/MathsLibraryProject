@@ -14,14 +14,7 @@ public:
 	SpriteObject(const char* filename) { Load(filename); }
 	virtual ~SpriteObject() { delete texture;  }
 
-	bool Load(const char* filename)
-	{
-		delete texture;
-
-		texture = nullptr;
-		//texture = new aie::Texture(filename);
-		return texture != nullptr;
-	}
+	bool Load(const char* filename);
 
 	virtual void OnDraw(aie::Renderer2D* renderer);
 

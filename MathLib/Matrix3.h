@@ -24,6 +24,7 @@ public:
 		float data[3][3];
 	};
 
+	//create a static const identity matrix
 	static const Matrix3 identity;
 
 	// reference access so it can be modified
