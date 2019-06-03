@@ -53,6 +53,17 @@ Vector4& Vector4::operator += (const Vector4& other)
 }
 
 //subtracting vectors
+Vector4 Vector4::operator - (const Vector4& other) const
+{
+	x - other.x;
+	y - other.y;
+	z - other.z;
+	w - other.w;
+
+	return *this;
+}
+
+//subtracting vectors
 Vector4& Vector4::operator -= (const Vector4& other)
 {
 	x -= other.x;
@@ -69,6 +80,17 @@ Vector4& Vector4::operator *= (float scalar)
 	y *= scalar;
 	z *= scalar;
 	w *= scalar;
+
+	return *this;
+}
+
+//scaling a vector
+Vector4& Vector4::operator /= (float scalar)
+{
+	x /= scalar;
+	y /= scalar;
+	z /= scalar;
+	w /= scalar;
 
 	return *this;
 }

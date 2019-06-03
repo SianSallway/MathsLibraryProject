@@ -3,36 +3,20 @@
 #include <assert.h>
 #include <math.h>
 
-/*float Vector3::operator[](int index)
-{
-	switch (index)
-	{
-	case 0:
-
-		return x;
-		break;
-
-	case 1:
-
-		return y;
-		break;
-
-	case 2:
-
-		return z;
-		break;
-
-	default:
-
-		assert(false);
-		break;
-	}
-}*/
-
 //adding vectors
 Vector3 Vector3::operator + (const Vector3& other) const
 {
 	return { x + other.x, y + other.y, z + other.z };
+}
+
+//subtracting vectors
+Vector3 Vector3::operator - (const Vector3& other) const
+{
+	x - other.x;
+	y - other.y;
+	z - other.z;
+
+	return *this;
 }
 
 //subtracting vectors

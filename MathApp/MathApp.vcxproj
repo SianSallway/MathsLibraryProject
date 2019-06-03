@@ -23,7 +23,7 @@
     <ProjectGuid>{E5070F73-A931-4158-9B4B-36DE04BAE99D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MathApp</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,7 +93,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathsFuncLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,7 +129,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathsFuncLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\s181585\source\repos\MathsLibraryProject\MathLib;$(SolutionDir)\MathFuncLib;C:\Users\s181585\source\repos\MathLib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

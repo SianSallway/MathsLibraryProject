@@ -19,9 +19,6 @@ public:
 		float data[3];
 	};
 
-	//allows access to a chosen axis or dimension
-	//float operator[](int index);
-
 	//allows access to vector
 	operator float*() { return &x; };
 
@@ -29,6 +26,9 @@ public:
 
 	//adding vectors
 	Vector3 operator + (const Vector3& other) const;
+
+	//subtracting vectors
+	Vector3 operator - (const Vector3& other) const;
 
 	//subtracting vectors
 	Vector3& operator -= (const Vector3& other);

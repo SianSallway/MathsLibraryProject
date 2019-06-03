@@ -17,27 +17,6 @@ Vector2::~Vector2()
 {
 }
 
-float Vector2::operator[](int index)
-{
-	switch (index)
-	{
-	case 0:
-
-		return x;
-		break;
-
-	case 1:
-
-		return y;
-		break;
-
-	default:
-
-		assert(false);
-		break;
-	}
-}
-
 //adding vectors
 Vector2 Vector2::operator + (const Vector2& other) const
 {
@@ -114,4 +93,33 @@ Vector2 Vector2::Normalised() const
 {
 	float mag = sqrt(x * x + y * y);
 	return { x / mag, y / mag};
+}
+
+//computes the dot product of vector
+float Vector2::DotProduct(const Vector2& other) const
+{
+	return x * other.x + y * other.y;
+}
+
+//distance between two points
+float Vector2::Distance(const Vector2& other) const
+{
+	float dX = x - other.x;
+	float dY = y - other.y;
+
+	return sqrt(dX * dX + dY * dY);
+}
+
+//returns the angle between two vectors 
+float Vector2::AngleBetween(const Vector2& other) const
+{
+	//normalise vectors
+	Vector2 a = Normalised();
+	Vector2 b = other.Normalised();
+
+	//calculate the dot product
+	float dot = a.x * b.x + a.y * b.y;
+
+	//return the angle between them
+	return acos(dot);
 }

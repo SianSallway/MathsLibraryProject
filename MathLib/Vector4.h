@@ -21,6 +21,9 @@ public:
 	//adding vectors
 	Vector4& operator += (const Vector4& other);
 
+	//subtracting vectors
+	Vector4 operator - (const Vector4& other) const;
+
 	//subracting vectors
 	Vector4& operator -= (const Vector4& other);
 

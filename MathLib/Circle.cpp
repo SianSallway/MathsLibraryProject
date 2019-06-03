@@ -19,13 +19,13 @@ void Circle::Fit(const Vector2* points, unsigned int count)
 	//loop through all points to find the min and max of the points
 	for (unsigned int i = 0; i < count; ++i, ++points)
 	{
-		//min = ::min(min, *points);
-		//max = ::max(max, *points);
+		min = ::min(min, *points);
+		max = ::max(max, *points);
 	}
 
 	//put a circle around the min/max box
 	center = (min + max) * 0.5f;
-	//radius = center.distanceTo(max);
+	radius = center.Distance(max);
 }
 
 void Circle::Fit(const vector<Vector2>&points)
@@ -37,13 +37,13 @@ void Circle::Fit(const vector<Vector2>&points)
 	//loop through all points to find the min and max of the points
 	for (auto& p : points)
 	{
-		//min = ::min(min, p);
-		//max = ::max(max, p);
+		min = ::min(min, p);
+		max = ::max(max, p);
 	}
 
 	//put a circle around the min/max box
 	center = (min + max) * 0.5f;
-	//radius = center.distanceTo(max);
+	radius = center.Distance(max);
 }
 
 //test for points and circles overlaping 

@@ -14,9 +14,6 @@ public:
 		};
 		float data[2];
 	};
-	
-	//allows access to a chosen axis or dimension
-	float operator[](int index);
 
 	//adding vectors
 	Vector2 operator + (const Vector2& other) const;
@@ -46,5 +43,14 @@ public:
 	void Normalise();
 
 	Vector2 Normalised() const;
+
+	//computes the dot product of vector
+	float DotProduct(const Vector2& other) const;
+
+	//distance betweentwo points
+	float Distance(const Vector2& other) const;
+
+	//returns the angle between two vectors 
+	float AngleBetween(const Vector2& other) const;
 };
 
