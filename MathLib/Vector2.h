@@ -15,6 +15,10 @@ public:
 		float data[2];
 	};
 
+	float min(float a, float b) { return a < b ? a : b; }
+
+	float max(float a, float b) { return a > b ? a : b; }
+
 	//adding vectors
 	Vector2 operator + (const Vector2& other) const;
 
@@ -52,5 +56,13 @@ public:
 
 	//returns the angle between two vectors 
 	float AngleBetween(const Vector2& other) const;
+
+	Vector2 Min(const Vector2& a, const Vector2& b);
+	
+	Vector2 Max(const Vector2& a, const Vector2& b);
+
+	float Clamp(float t, float a, float b);	
+	
+	//Vector2 Clamp(const Vector2& t, const Vector2& a, const Vector2& b);
 };
 

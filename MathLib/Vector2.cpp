@@ -123,3 +123,23 @@ float Vector2::AngleBetween(const Vector2& other) const
 	//return the angle between them
 	return acos(dot);
 }
+
+Vector2 Vector2::Min(const Vector2& a, const Vector2& b)
+{
+	return { min(a.x, b.x), min(a.y, b.y) };
+}
+
+Vector2 Vector2::Max(const Vector2& a, const Vector2& b)
+{
+	return { max(a.x, b.x), max(a.y, b.y) };
+}
+
+float Vector2::Clamp(float t, float a, float b)
+{
+	return max(a, min(b, t));
+}
+
+/*Vector2 Vector2::Clamp(const Vector2& t, const Vector2& a, const Vector2& b)
+{
+	return max(a, min(b, t));
+}*/
