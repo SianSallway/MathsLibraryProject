@@ -4,6 +4,9 @@
 
 Matrix3::Matrix3()
 {
+	xAxis = { 1, 0, 0 };
+	yAxis = { 0, 1, 0 };
+	zAxis = { 0, 0, 1 };
 }
 
 Matrix3::~Matrix3()
