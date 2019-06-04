@@ -38,14 +38,8 @@ public:
 	//creating a scaled matrix
 	void SetScaled(float x, float y, float z);
 
-	//creating a scaled matrix passing a vector
-	//void SetScaled(const Vector3& v);
-
 	//applying scaling to an existing matrix
 	void Scale(float x, float y, float z);
-
-	//applying scaling to an existing matrix passing a vector
-	//void Scale(const Vector3& v);
 
 	//returns transposed matrix
 	Matrix4 Transposed() const;

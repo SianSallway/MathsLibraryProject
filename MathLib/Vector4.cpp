@@ -9,13 +9,17 @@ Vector4::Vector4()
 
 Vector4::Vector4(float _x, float _y, float _z, float _w)
 {
+	x = _x;
+	y = _y;
+	z = _z;
+	w = _w;
 }
 
 Vector4::~Vector4()
 {
 }
 
-/*float Vector4::operator[](int index)
+float Vector4::operator[](int index)
 {
 	switch (index)
 	{
@@ -34,12 +38,17 @@ Vector4::~Vector4()
 		return z;
 		break;
 
+	case 3:
+
+		return w;
+		break;
+
 	default:
 
 		assert(false);
 		break;
 	}
-}*/
+}
 
 //adding vectors
 Vector4& Vector4::operator += (const Vector4& other)

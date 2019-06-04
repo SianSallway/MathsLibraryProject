@@ -15,5 +15,17 @@ public:
 
 		float data[3];
 	};
+
+	void SetRed(float value);
+
+	void SetBlue(float value);
+	
+	void SetGreen(float value);
+
+	float GetRed();
+
+	float GetBlue();
+
+	float GetGreen();
 };
 

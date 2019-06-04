@@ -16,7 +16,7 @@ public:
 	};
 
 	//allows access to a chosen axis or dimension
-	//float operator[](int index);
+	float operator[](int index);
 
 	//adding vectors
 	Vector4& operator += (const Vector4& other);
