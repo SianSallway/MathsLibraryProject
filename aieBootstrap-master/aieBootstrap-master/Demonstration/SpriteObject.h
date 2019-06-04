@@ -12,7 +12,7 @@ public:
 
 	SpriteObject();
 	SpriteObject(const char* filename) { Load(filename); }
-	virtual ~SpriteObject() { delete texture;  }
+	virtual ~SpriteObject();
 
 	bool Load(const char* filename);
 

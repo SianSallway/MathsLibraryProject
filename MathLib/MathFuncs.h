@@ -17,5 +17,11 @@ public:
 
 	//returns a / b
 	static double Divide(double a, double b);
+
+	static float Max(float a, float b);
+
+	static float Min(float a, float b);
+
+	static float Clamp(float a, float min, float max);
 };
 

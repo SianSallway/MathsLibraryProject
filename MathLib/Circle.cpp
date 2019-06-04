@@ -68,7 +68,7 @@ bool Circle::Overlaps(const Circle& other) const
 //test for boxes and circles overlaping
 bool Circle::Overlaps(const AABB& box) const
 {
-	auto difference = box.Center - center;
+	auto difference = box.Center() - center;
 
 	return difference.DotProduct(difference) <= (radius * radius);
 }

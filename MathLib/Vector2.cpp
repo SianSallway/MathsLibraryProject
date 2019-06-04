@@ -2,6 +2,7 @@
 #include "Vector2.h"
 #include <assert.h>
 #include <math.h>
+#include "MathFuncs.h"
 
 Vector2::Vector2()
 {
@@ -126,20 +127,15 @@ float Vector2::AngleBetween(const Vector2& other) const
 
 Vector2 Vector2::Min(const Vector2& a, const Vector2& b)
 {
-	return { min(a.x, b.x), min(a.y, b.y) };
+	return { MathFuncs::Min(a.x, b.x), MathFuncs::Min(a.y, b.y) };
 }
 
 Vector2 Vector2::Max(const Vector2& a, const Vector2& b)
 {
-	return { max(a.x, b.x), max(a.y, b.y) };
+	return { MathFuncs::Max(a.x, b.x), MathFuncs::Max(a.y, b.y) };
 }
 
-float Vector2::Clamp(float t, float a, float b)
+Vector2 Vector2::Clamp(const Vector2& t, const Vector2& a, const Vector2& b)
 {
-	return max(a, min(b, t));
+	return Max(a, Min(b, t));
 }
-
-/*Vector2 Vector2::Clamp(const Vector2& t, const Vector2& a, const Vector2& b)
-{
-	return max(a, min(b, t));
-}*/
