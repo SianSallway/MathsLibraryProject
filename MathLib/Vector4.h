@@ -15,8 +15,11 @@ public:
 		float data[4];
 	};
 
-	//allows access to a chosen axis or dimension
-	float operator[](int index);
+
+	//allows access to vector
+	operator float*() { return &x; };
+
+	operator const float*() const { return &x; };
 
 	//adding vectors
 	Vector4& operator += (const Vector4& other);
@@ -26,6 +29,9 @@ public:
 
 	//subracting vectors
 	Vector4& operator -= (const Vector4& other);
+
+	//scaling a vector
+	Vector4 operator * (float scalar) const;
 
 	//multiplying by scalar
 	Vector4& operator *= (float scalar);

@@ -58,10 +58,10 @@ Vector4 Matrix4::operator * (const Vector4& v) const
 {
 	Vector4 result;
 
-	/*result[0] = data[0][0] * v[0] + data[1][0] * v[1] + data[2][0] * v[2] + data[3][0] * v[3];
+	result[0] = data[0][0] * v[0] + data[1][0] * v[1] + data[2][0] * v[2] + data[3][0] * v[3];
 	result[1] = data[0][1] * v[0] + data[1][1] * v[1] + data[2][1] * v[2] + data[3][1] * v[3];
 	result[2] = data[0][2] * v[0] + data[1][2] * v[1] + data[2][2] * v[2] + data[3][2] * v[3];
-	result[3] = data[0][3] * v[0] + data[1][3] * v[1] + data[2][3] * v[2] + data[3][3] * v[3];*/
+	result[3] = data[0][3] * v[0] + data[1][3] * v[1] + data[2][3] * v[2] + data[3][3] * v[3];
 
 	return result;
 }

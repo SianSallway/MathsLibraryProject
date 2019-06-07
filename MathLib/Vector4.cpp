@@ -19,37 +19,6 @@ Vector4::~Vector4()
 {
 }
 
-float Vector4::operator[](int index)
-{
-	switch (index)
-	{
-	case 0:
-
-		return x;
-		break;
-
-	case 1:
-
-		return y;
-		break;
-
-	case 2:
-
-		return z;
-		break;
-
-	case 3:
-
-		return w;
-		break;
-
-	default:
-
-		assert(false);
-		break;
-	}
-}
-
 //adding vectors
 Vector4& Vector4::operator += (const Vector4& other)
 {
@@ -81,6 +50,12 @@ Vector4& Vector4::operator -= (const Vector4& other)
 	w -= other.w;
 
 	return *this;
+}
+
+//scaling a vector
+Vector4 Vector4::operator * (float scalar) const
+{
+	return { x * scalar, y * scalar, z * scalar, w * scalar };
 }
 
 Vector4& Vector4::operator *= (float scalar)
