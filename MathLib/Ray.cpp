@@ -48,3 +48,98 @@ bool Ray::Intersects(const Circle& circle, Vector2* i = nullptr) const
 	//default no intersectoin 
 	return false;
 }
+
+//testing for intersections with planes and the location of the intersection
+bool Ray::Intersects(const Plane& plane, Vector2* i) const
+{
+	//project ray direction onto plane normal 
+	//this should give us a value between -1 and 1 
+	float t = direction.DotProduct(plane.normal);
+
+	//must face the plane 
+	if (t > 0)
+	{
+		return false;
+	}
+
+	//get distance of ray origin to the plane 
+	float d = origin.DotProduct(plane.normal) + plane.d;
+
+	//checkif ray is parallel with the plane 
+	//no intersection if parallel and not touching
+	if (t == 0 && d != 0)
+	{
+		return false;
+	}
+
+	//calculate distance along ray to plane 
+	t = d == 0 ? 0 : -(d / t);
+
+	//intersects if within range 
+	if (t >= 0 && t <= length)
+	{
+		//store intersection point if requested 
+		if (i != nullptr)
+		{
+			*i = origin + direction * t;
+			return true;
+		}
+	}
+
+	//default no intersectoin 
+	return false;
+}
+
+//testing for intersections with boxes and the location of the intersection
+bool Ray::Intersects(const AABB& box, Vector2* i) const
+{
+	//get distance to each axis of the box 
+	float xMin, xMax, yMin, yMax;
+
+	//get min and max in the x-axis
+	if (direction.x < 0)
+	{
+		xMin = (box.max.x - origin.x) / direction.x;
+		xMax = (box.min.x - origin.x) / direction.x;
+	}
+	else
+	{
+		xMin = (box.min.x - origin.x) / direction.x;
+		xMax = (box.max.x - origin.x) / direction.x;
+	}
+
+	//get min and max in the y-axis
+	if (direction.y < 0)
+	{
+		yMin = (box.max.y - origin.y) / direction.y;
+		yMax = (box.min.y - origin.y) / direction.y;
+	}
+	else
+	{
+		yMin = (box.min.y - origin.y) / direction.y;
+		yMax = (box.max.y - origin.y) / direction.y;
+	}
+
+	//ensure within box 
+	if (xMin > yMax || yMin > xMax)
+	{
+		return false;
+	}
+
+	//the first contact is the largest of the two min
+	float t = MathFuncs::Max(xMin, yMin);
+
+	//intersects if within range
+	if (t >= 0 && t <= length)
+	{
+		//store intersection point if requested 
+		if (i != nullptr)
+		{
+			*i = origin + direction * t;
+			return true;
+		}
+	}
+
+	//default no intersectoin 
+	return false;
+}
