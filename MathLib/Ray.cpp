@@ -20,7 +20,7 @@ Vector2 Ray::ClosestPoint(const Vector2& point) const
 }
 
 //testing for intersections with circles and the location of the intersection
-bool Ray::Intersects(const Circle& circle, Vector2* i = nullptr) const
+bool Ray::Intersects(const Circle& circle, Vector2* i) const
 {
 	//calculates ray origin to circle center
 	auto l = circle.center - origin;
