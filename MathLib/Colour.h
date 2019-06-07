@@ -3,29 +3,29 @@ class Colour
 {
 public:
 	Colour();
-	Colour(float _r, float _g, float _b);
+	Colour(unsigned int _colour);
 	~Colour();
 
-	union
-	{
-		struct
-		{
-			float r, g, b;
-		};
+	void SetColour(unsigned int _colour);
 
-		float data[3];
-	};
+	void SetRed(char value);
 
-	void SetRed(float value);
+	void SetBlue(char value);
 
-	void SetBlue(float value);
-	
-	void SetGreen(float value);
+	void SetGreen(char value);
 
-	float GetRed();
+	void SetAlpha(char value);
 
-	float GetBlue();
+	char GetRed();
 
-	float GetGreen();
+	char GetBlue();
+
+	char GetGreen();
+
+	char GetAlpha();
+
+private:
+
+	unsigned int colour;
 };
 
