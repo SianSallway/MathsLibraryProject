@@ -4,7 +4,8 @@
 class Matrix3
 {
 public:
-	Matrix3();
+	Matrix3(float a11, float a12, float a13, float a21, float a22, float a23, float a31, float a32, float a33);
+	Matrix3() {};
 	~Matrix3();
 
 	union 

@@ -2,11 +2,11 @@
 #include "Matrix3.h"
 #include <math.h>
 
-Matrix3::Matrix3()
+Matrix3::Matrix3(float a11, float a12, float a13, float a21, float a22, float a23, float a31, float a32, float a33)
 {
-	xAxis = { 1, 0, 0 };
-	yAxis = { 0, 1, 0 };
-	zAxis = { 0, 0, 1 };
+	xAxis = { a11, a12, a13 };
+	yAxis = { a21, a22, a23 };
+	zAxis = { a31, a32, a33 };
 }
 
 Matrix3::~Matrix3()
