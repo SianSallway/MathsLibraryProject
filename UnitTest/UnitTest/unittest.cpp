@@ -160,11 +160,11 @@ bool runUnitTests() {
 
 	// vector pre-scale
 	v2a = Vector2(13.5f, -48.23f);
-	v2c = 2.482f * v2a;
+	v2c =  v2a * 2.482f;
 	v3a = Vector3(13.5f, -48.23f, 862);
-	v3c = 0.256f * v3a;
+	v3c = v3a  * 0.256f;
 	v4a = Vector4(13.5f, -48.23f, 862, 0);
-	v4c = 4.89f * v4a;
+	v4c = v4a * 4.89f;
 
 	TEST("Vector2 pre-scale", v2c, Vector2(33.5069999695f, -119.706863403f));
 	TEST("Vector3 pre-scale", v3c, Vector3(3.45600008965f, -12.3468809128f, 220.672012329f));

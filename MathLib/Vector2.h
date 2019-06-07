@@ -15,6 +15,12 @@ public:
 		float data[2];
 	};
 
+	//allows access to vector
+	operator float*() { return &x; };
+
+	operator const float*() const { return &x; };
+
+
 	//adding vectors
 	Vector2 operator + (const Vector2& other) const;
 
