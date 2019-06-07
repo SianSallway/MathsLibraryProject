@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "Circle.h"
 #include <math.h>
 
 class Ray
@@ -14,5 +15,8 @@ public:
 	float length;
 
 	Vector2 ClosestPoint(const Vector2& point) const;
+
+	//testing for intersections with circles and the location of the intersection
+	bool Intersects(const Circle& circle, Vector2* I = nullptr) const;
 };
 
