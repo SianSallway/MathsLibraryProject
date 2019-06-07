@@ -20,6 +20,12 @@ Vector4::~Vector4()
 }
 
 //adding vectors
+Vector4 Vector4::operator + (const Vector4& other) const
+{
+	return { x + other.x, y + other.y,  z + other.z , w + other.w };
+}
+
+//adding vectors
 Vector4& Vector4::operator += (const Vector4& other)
 {
 	x += other.x;

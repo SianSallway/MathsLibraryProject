@@ -22,6 +22,9 @@ public:
 	operator const float*() const { return &x; };
 
 	//adding vectors
+	Vector4 operator + (const Vector4& other) const;
+
+	//adding vectors
 	Vector4& operator += (const Vector4& other);
 
 	//subtracting vectors

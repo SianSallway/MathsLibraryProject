@@ -1,4 +1,10 @@
 #include "unittest.h"
+#include "MathFuncs.h"
+#include "Vector2.h"
+#include "Vector3.h"
+#include "Vector4.h"
+#include "Matrix3.h"
+#include "Matrix4.h"
 #include <iostream>
 #include <iomanip>
 
@@ -166,11 +172,11 @@ bool runUnitTests() {
 
 	// vector dot product
 	v2a = Vector2(13.5f, -48.23f); v2b = Vector2(5, 3.99f);
-	float dot2 = v2a.dot(v2b);
+	float dot2 = v2a.DotProduct(v2b);
 	v3a = Vector3(13.5f, -48.23f, 862); v3b = Vector3(5, 3.99f, -12);
-	float dot3 = v3a.dot(v3b);
+	float dot3 = v3a.DotProduct(v3b);
 	v4a = Vector4(13.5f, -48.23f, 862, 0); v4b = Vector4(5, 3.99f, -12, 1);
-	float dot4 = v4a.dot(v4b);
+	float dot4 = v4a.DotProduct(v4b);
 
 	TEST("Vector2 dot", dot2, -124.937698364f);
 	TEST("Vector3 dot", dot3, -10468.9375f);
@@ -178,20 +184,20 @@ bool runUnitTests() {
 
 	// vector cross product
 	v3a = Vector3(13.5f, -48.23f, 862); v3b = Vector3(5, 3.99f, -12);
-	v3c = v3a.cross(v3b);
+	v3c = v3a.CrossProduct(v3b);
 	v4a = Vector4(13.5f, -48.23f, 862, 0); v4b = Vector4(5, 3.99f, -12, 1);
-	v4c = v4a.cross(v4b);
+	v4c = v4a.CrossProduct(v4b);
 
 	TEST("Vector3 cross", v3c, Vector3(-2860.62011719f, 4472.00000000f, 295.01498413f));
 	TEST("Vector4 cross", v4c, Vector4(-2860.62011719f, 4472.00000000f, 295.01498413f, 0));
 
 	// vector magnitude
 	v2a = Vector2(13.5f, -48.23f);
-	float mag2 = v2a.magnitude();
+	float mag2 = v2a.Magnitude();
 	v3a = Vector3(13.5f, -48.23f, 862);
-	float mag3 = v3a.magnitude();
+	float mag3 = v3a.Magnitude();
 	v4a = Vector4(13.5f, -48.23f, 862, 0);
-	float mag4 = v4a.magnitude();
+	float mag4 = v4a.Magnitude();
 
 	TEST("Vector2 magnitude", mag2, 50.0837593079f);
 	TEST("Vector3 magnitude", mag3, 863.453735352f);
@@ -199,11 +205,11 @@ bool runUnitTests() {
 
 	// vector normalise
 	v2a = Vector2(-13.5f, -48.23f);
-	v2a.normalise();
+	v2a.Normalise();
 	v3a = Vector3(13.5f, -48.23f, 862);
-	v3a.normalise();
+	v3a.Normalise();
 	v4a = Vector4(243, -48.23f, 862, 0);
-	v4a.normalise();
+	v4a.Normalise();
 
 	TEST("Vector2 normalise", v2a, Vector2(-0.269548f,-0.962987f));
 	TEST("Vector3 normalise", v3a, Vector3(0.0156349f,-0.0558571f,0.998316f));
@@ -212,12 +218,12 @@ bool runUnitTests() {
 	// matrix rotation
 	Matrix3 m3a, m3b, m3c, m3d;
 	Matrix4 m4a, m4b, m4c, m4d;
-	m3a.setRotateX(3.98f);
-	m4a.setRotateX(4.5f);
-	m3b.setRotateY(1.76f);
-	m4b.setRotateY(-2.6f);
-	m3c.setRotateZ(9.62f);
-	m4c.setRotateZ(0.72f);
+	m3a.SetRotateX(3.98f);
+	m4a.SetRotateX(4.5f);
+	m3b.SetRotateX(1.76f);
+	m4b.SetRotateX(-2.6f);
+	m3c.SetRotateX(9.62f);
+	m4c.SetRotateX(0.72f);
 
 	TEST("Matrix3 set rotate", m3a, Matrix3(1,0,0,0,-0.668648f,-0.743579f,0,0.743579f,-0.668648f));
 	TEST("Matrix3 set rotate", m3b, Matrix3(-0.188077f,0,-0.982154f,0,1,0,0.982154f,0,-0.188077f));
@@ -252,14 +258,14 @@ bool runUnitTests() {
 				  0, 1, 0,
 				  0, 0, 1);
 	m3b[2] = Vector3(55, 44, 1);
-	m3c.setRotateZ(2.2f);
+	m3c.SetRotateZ(2.2f);
 	m3c[2] = Vector3(55, 44, 1);
 	m4b = Matrix4(1, 0, 0, 0,
 				  0, 1, 0, 0,
 				  0, 0, 1, 0,
 				  0, 0, 0, 1);
 	m4b[3] = Vector4(55, 44, 99, 1);
-	m4c.setRotateZ(2.2f);
+	m4c.SetRotateZ(2.2f);
 	m4c[3] = Vector4(55, 44, 99, 1);
 
 	v3a = Vector3(13.5f, -48.23f, 1);
@@ -279,14 +285,14 @@ bool runUnitTests() {
 				  0, 1, 0,
 				  0, 0, 1);
 	m3b[2] = Vector3(55, 44, 1);
-	m3c.setRotateZ(2.2f);
+	m3c.SetRotateZ(2.2f);
 	m3c[2] = Vector3(55, 44, 1);
 	m4b = Matrix4(1, 0, 0, 0,
 				  0, 1, 0, 0,
 				  0, 0, 1, 0,
 				  0, 0, 0, 1);
 	m4b[3] = Vector4(55, 44, 99, 1);
-	m4c.setRotateZ(2.2f);
+	m4c.SetRotateZ(2.2f);
 	m4c[3] = Vector4(55, 44, 99, 1);
 
 	v3a = Vector3(13.5f, -48.23f, 0);
