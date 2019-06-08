@@ -21,11 +21,20 @@ public:
 		float data[4][4];
 	};
 
-	// reference access so it can be modified
+	//create a static const identity matrix
+	static const Matrix4 identity;
+
+	//reference access so it can be modified
 	Vector4& operator [] (int index);
 
-	// const access for read-only
+	//const access for read-only
 	const Vector4& operator [] (int index) const;
+
+	//adding matrices
+	Matrix4 operator + (const Matrix4& other) const;
+
+	//subtracting matrices
+	Matrix4 operator - (const Matrix4& other) const;
 
 	//binary * operator
 	Matrix4 operator * (const Matrix4& other) const;
@@ -39,8 +48,14 @@ public:
 	//creating a scaled matrix
 	void SetScaled(float x, float y, float z);
 
+	//creating a scaled matrix passing a vector
+	void SetScaled(const Vector4& other);
+
 	//applying scaling to an existing matrix
 	void Scale(float x, float y, float z);
+
+	//applying scaling to an existing matrix passing a vector
+	void Scale(const Vector4& other);
 
 	//returns transposed matrix
 	Matrix4 Transposed() const;

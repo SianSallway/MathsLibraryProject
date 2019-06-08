@@ -14,16 +14,56 @@ Matrix4::~Matrix4()
 {
 }
 
+//create a static const identity matrix
+const Matrix4 Matrix4::identity = Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+
 // reference access so it can be modified
 Vector4& Matrix4::operator [] (int index)
 {
 	return axis[index];
 }
 
-// const access for read-only
+//const access for read-only
 const Vector4& Matrix4::operator [] (int index) const
 {
 	return axis[index];
+}
+
+//adding matrices
+Matrix4 Matrix4::operator + (const Matrix4& other) const
+{
+	Matrix4 result;
+
+	for (int r = 0; r < 4; ++r)
+	{
+		for (int c = 0; c < 4; ++r)
+		{
+			result.data[c][r] = (data[0][r] + other.data[c][0]) +
+				(data[1][r] + other.data[c][1]) +
+				(data[2][r] + other.data[c][2]) +
+				(data[3][r] + other.data[c][3]);
+		}
+	}
+	return result;
+}
+
+
+//subtracting matrices
+Matrix4 Matrix4::operator - (const Matrix4& other) const
+{
+	Matrix4 result;
+
+	for (int r = 0; r < 4; ++r)
+	{
+		for (int c = 0; c < 4; ++r)
+		{
+			result.data[c][r] = (data[0][r] - other.data[c][0]) +
+				(data[1][r] - other.data[c][1]) +
+				(data[2][r] - other.data[c][2]) +
+				(data[3][r] - other.data[c][3]);
+		}
+	}
+	return result;
 }
 
 Matrix4& Matrix4::operator = (const Matrix4& other)
@@ -80,11 +120,30 @@ void Matrix4::SetScaled(float x, float y, float z)
 	translation = { 0, 0, 0, 1 };
 }
 
+//creating a scaled matrix passing a vector
+void Matrix4::SetScaled(const Vector4& other)
+{
+	//set scale of each axis
+	xAxis = { other.x, 0, 0, 0 };
+	yAxis = { 0, other.y, 0, 0 };
+	zAxis = { 0, 0, other.z, 0 };
+	translation = { 0, 0, 0, 1 };
+}
+
 //applying scaling to an existing matrix
 void Matrix4::Scale(float x, float y, float z)
 {
 	Matrix4 m;
 	m.SetScaled(x, y, z);
+
+	*this = *this * m;
+}
+
+//applying scaling to an existing matrix passing a vector
+void Matrix4::Scale(const Vector4& other)
+{
+	Matrix4 m;
+	m.SetScaled(other.x, other.y, other.z);
 
 	*this = *this * m;
 }

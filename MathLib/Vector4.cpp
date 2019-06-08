@@ -113,6 +113,12 @@ void Vector4::Normalise()
 	w /= magnitude;
 }
 
+Vector4 Vector4::Normalised() const
+{
+	float mag = sqrt(x * x + y * y + z * z + w * w);
+	return { x / mag, y / mag, z / mag, w / mag};
+}
+
 //computes the dot product of vector
 float Vector4::DotProduct(const Vector4& other) const
 {
@@ -126,4 +132,18 @@ Vector4 Vector4::CrossProduct(const Vector4& other) const
 			 z * other.x - x * other.z,
 			 x * other.y - y * other.x,
 			 0};
+}
+
+//returns the angle between two vectors 
+float Vector4::AngleBetween(const Vector4& other) const
+{
+	//normalise vectors
+	Vector4 a = Normalised();
+	Vector4 b = other.Normalised();
+
+	//calculate the dot product
+	float dot = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
+
+	//return the angle between them
+	return acos(dot);
 }

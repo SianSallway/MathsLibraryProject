@@ -45,12 +45,10 @@ Vector2& Vector2::operator -= (const Vector2& other)
 //scaling a vector
 Vector2 Vector2::operator * (float scalar) const
 {
-	/*x * scalar;
+	x * scalar;
 	y * scalar;
 
-	return *this;*/
-
-	return { x * scalar, y * scalar };
+	return *this;
 }
 
 //scaling a vector
