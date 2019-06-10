@@ -14,7 +14,7 @@ Matrix3::~Matrix3()
 }
 
 //create a static const identity matrix
-const Matrix3 Matrix3::identity;// = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+const Matrix3 Matrix3::identity = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
 
 // reference access so it can be modified
 Vector3& Matrix3::operator [] (int index)
@@ -26,6 +26,42 @@ Vector3& Matrix3::operator [] (int index)
 const Vector3& Matrix3::operator [] (int index) const
 {
 	return axis[index];
+}
+
+//adding matrices
+Matrix3 Matrix3::operator + (const Matrix3& other) const
+{
+	Matrix3 result;
+
+	for (int r = 0; r < 3; ++r)
+	{
+		for (int c = 0; c < 3; ++r)
+		{
+			result.data[c][r] = (data[0][r] + other.data[c][0]) +
+				(data[1][r] + other.data[c][1]) +
+				(data[2][r] + other.data[c][2]);
+		}
+	}
+
+	return result;
+}
+
+//subtracting matrices
+Matrix3 Matrix3::operator - (const Matrix3& other) const
+{
+	Matrix3 result;
+
+	for (int r = 0; r < 3; ++r)
+	{
+		for (int c = 0; c < 3; ++r)
+		{
+			result.data[c][r] = (data[0][r] - other.data[c][0]) +
+				(data[1][r] - other.data[c][1]) +
+				(data[2][r] - other.data[c][2]);
+		}
+	}
+
+	return result;
 }
 
 //binary * operator
@@ -79,11 +115,29 @@ void Matrix3::SetScaled(float x, float y, float z)
 	zAxis = {0, 0, z};
 }
 
+//creating a scaled matrix passing a vector
+void Matrix3::SetScaled(const Vector3& other)
+{
+	//set scale of each axis
+	xAxis = { other.x, 0, 0 };
+	yAxis = { 0, other.y, 0 };
+	zAxis = { 0, 0, other.z };
+}
+
 //applying scaling to an existing matrix
 void Matrix3::Scale(float x, float y, float z)
 {
 	Matrix3 m;
 	m.SetScaled(x, y, z);
+
+	*this = *this * m;
+}
+
+//applying scaling to an existing matrix passing a vector
+void Matrix3::Scale(const Vector3& other)
+{
+	Matrix3 m;
+	m.SetScaled(other.x, other.y, other.z);
 
 	*this = *this * m;
 }
