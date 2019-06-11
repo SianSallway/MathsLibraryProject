@@ -21,6 +21,9 @@ public:
 		float data[4][4];
 	};
 
+	//create a static const identity matrix
+	static const Matrix4 identity;
+
 	// reference access so it can be modified
 	Vector4& operator [] (int index);
 

@@ -14,6 +14,9 @@ Matrix4::~Matrix4()
 {
 }
 
+//create a static const identity matrix
+const Matrix4 Matrix4::identity = Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+
 // reference access so it can be modified
 Vector4& Matrix4::operator [] (int index)
 {

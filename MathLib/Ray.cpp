@@ -20,7 +20,7 @@ Vector2 Ray::ClosestPoint(const Vector2& point) const
 }
 
 //testing for intersections with circles and the location of the intersection
-bool Ray::Intersects(const Circle& circle, Vector2* i) const
+bool Ray::Intersects(const Circle& circle, Vector2* i, Vector2* r) const
 {
 	//calculates ray origin to circle center
 	auto l = circle.center - origin;
@@ -41,6 +41,23 @@ bool Ray::Intersects(const Circle& circle, Vector2* i) const
 		if (i != nullptr)
 		{
 			*i = origin + direction * t;
+
+			if (r != nullptr)
+			{
+				//get surface normal at intersection point
+				auto N = ((origin + direction * t) - circle.center);
+				N /= circle.radius;
+
+				//get penetration vector 
+				auto P = direction * (length - t);
+
+				//get penetration amount 
+				float p = P.DotProduct(N);
+
+				//get reflected vector
+				*r = N * -2 * p + P;
+			}
+
 			return true;
 		}
 	}
@@ -50,7 +67,7 @@ bool Ray::Intersects(const Circle& circle, Vector2* i) const
 }
 
 //testing for intersections with planes and the location of the intersection
-bool Ray::Intersects(const Plane& plane, Vector2* i) const
+bool Ray::Intersects(const Plane& plane, Vector2* i, Vector2* r) const
 {
 	//project ray direction onto plane normal 
 	//this should give us a value between -1 and 1 
@@ -82,6 +99,19 @@ bool Ray::Intersects(const Plane& plane, Vector2* i) const
 		if (i != nullptr)
 		{
 			*i = origin + direction * t;
+
+			if (r != nullptr)
+			{
+				//get penetration vector
+				auto P = direction * (length - t);
+
+				//get penetration amount
+				float p = P.DotProduct(plane.normal);
+
+				//get reflected vector
+				*r = plane.normal * -2 * p + P;
+			}
+
 			return true;
 		}
 	}
@@ -91,7 +121,7 @@ bool Ray::Intersects(const Plane& plane, Vector2* i) const
 }
 
 //testing for intersections with boxes and the location of the intersection
-bool Ray::Intersects(const AABB& box, Vector2* i) const
+bool Ray::Intersects(const AABB& box, Vector2* i, Vector2* r) const
 {
 	//get distance to each axis of the box 
 	float xMin, xMax, yMin, yMax;
@@ -136,6 +166,50 @@ bool Ray::Intersects(const AABB& box, Vector2* i) const
 		if (i != nullptr)
 		{
 			*i = origin + direction * t;
+
+			if (r != nullptr)
+			{
+				//need to determine box side hit 
+				Vector2 N = {};
+				if ( t == xMin)
+				{
+					//horizontal normal
+					if (direction.x < 0)
+					{
+						//right side
+						N = { 1, 0 };
+					}
+					else
+					{
+						//left side
+						N = { -1, 0 };
+					}
+				}
+				else
+				{
+					//vertical normal
+					if (direction.y < 0)
+					{
+						//top
+						N = { 0, 1 };
+					}
+					else
+					{
+						//bottom
+						N = { 0, -1 };
+					}
+				}
+
+				//get penetration vector
+				auto P = direction * (length - t);
+
+				//get penetration amount
+				float p = P.DotProduct(N);
+
+				//get reflected vector
+				*r = N * -2 * p + P;
+			}
+
 			return true;
 		}
 	}

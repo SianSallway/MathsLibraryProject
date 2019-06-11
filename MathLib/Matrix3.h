@@ -14,12 +14,7 @@ public:
 		{
 			Vector3 xAxis;
 			Vector3 yAxis;
-
-			union
-			{
-				Vector3 zAxis;
-				Vector3 translation;
-			};
+			Vector3 zAxis;
 		};
 		Vector3 axis[3];
 		float data[3][3];
@@ -57,6 +52,9 @@ public:
 
 	//returns transposed matrix
 	Matrix3 Transposed() const;
+
+	//matrix translation
+	void Translate(float x, float y);
 
 	//sets up a matrix to be rotated around the x axis
 	void SetRotateX(float radians);

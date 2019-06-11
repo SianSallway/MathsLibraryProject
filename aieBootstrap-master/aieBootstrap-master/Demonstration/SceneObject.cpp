@@ -132,6 +132,6 @@ void SceneObject::Scale(float width, float height)
 
 void SceneObject::Translate(float x, float y)
 {
-	//localTransform.Translate(x, y);
+	localTransform.Translate(x, y);
 	UpdateTransform();
 }

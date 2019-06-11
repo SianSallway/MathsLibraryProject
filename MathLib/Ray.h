@@ -19,12 +19,12 @@ public:
 	Vector2 ClosestPoint(const Vector2& point) const;
 
 	//testing for intersections with circles and the location of the intersection
-	bool Intersects(const Circle& circle, Vector2* i = nullptr) const;
+	bool Intersects(const Circle& circle, Vector2* i = nullptr, Vector2* r = nullptr) const;
 
 	//testing for intersections with planes and the location of the intersection
-	bool Intersects(const Plane& plane, Vector2* i = nullptr) const;
+	bool Intersects(const Plane& plane, Vector2* i = nullptr, Vector2* r = nullptr) const;
 
 	//testing for intersections with boxes and the location of the intersection
-	bool Intersects(const AABB& box, Vector2* i = nullptr) const;
+	bool Intersects(const AABB& box, Vector2* i = nullptr, Vector2* r = nullptr) const;
 };
 

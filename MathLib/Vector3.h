@@ -10,11 +10,6 @@ public:
 		struct
 		{
 			float x, y, z;
-
-			union
-			{
-				float z, w;
-			};
 		};
 		float data[3];
 	};

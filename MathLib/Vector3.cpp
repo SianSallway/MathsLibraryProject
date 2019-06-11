@@ -69,7 +69,7 @@ Vector3& Vector3::operator = (const Vector3& other)
 //computes magnitude of vector
 float Vector3::Magnitude() const
 {
-	return sqrt(x * x + y * y + z * z);
+	return sqrtf(x * x + y * y + z * z);
 }
 
 //another way of computing magnitude of vector
@@ -85,13 +85,13 @@ float Vector3::Distance(const Vector3& other) const
 	float dY = y - other.y;
 	float dZ = z - other.z;
 
-	return sqrt(dX * dX + dY * dY + dZ * dZ);
+	return sqrtf(dX * dX + dY * dY + dZ * dZ);
 }
 
 //Converts vector to unit length 
 void Vector3::Normalise()
 {
-	float magnitude = sqrt(x * x + y * y + z * z);
+	float magnitude = sqrtf(x * x + y * y + z * z);
 
 	x /= magnitude;
 	y /= magnitude;
@@ -100,7 +100,7 @@ void Vector3::Normalise()
 
 Vector3 Vector3::Normalised() const
 {
-	float mag = sqrt(x * x + y * y + z * z);
+	float mag = sqrtf(x * x + y * y + z * z);
 	return { x / mag, y / mag, z / mag };
 }
 
@@ -129,5 +129,5 @@ float Vector3::AngleBetween(const Vector3& other) const
 	float dot = a.x * b.x + a.y * b.y + a.z * b.z;
 
 	//return the angle between them
-	return acos(dot);
+	return acosf(dot);
 }

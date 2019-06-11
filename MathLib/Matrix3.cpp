@@ -14,7 +14,7 @@ Matrix3::~Matrix3()
 }
 
 //create a static const identity matrix
-const Matrix3 Matrix3::identity;// = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+const Matrix3 Matrix3::identity = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
 
 // reference access so it can be modified
 Vector3& Matrix3::operator [] (int index)
@@ -102,6 +102,12 @@ Matrix3 Matrix3::Transposed() const
 	}
 
 	return result;
+}
+
+//matrix translation
+void Matrix3::Translate(float x, float y)
+{
+
 }
 
 //sets up a matrix to be rotated around the x axis
