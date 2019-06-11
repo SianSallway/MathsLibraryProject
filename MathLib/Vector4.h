@@ -51,10 +51,15 @@ public:
 	//converts vector to unit length 
 	void Normalise();
 
+	Vector4 Normalised() const;
+
 	//computes the dot product of vector
 	float DotProduct(const Vector4& other) const;
 
 	//computes the cross product of vector
 	Vector4 CrossProduct(const Vector4& other) const;
+
+	//returns the angle between two vectors 
+	float AngleBetween(const Vector4& other) const;
 };
 

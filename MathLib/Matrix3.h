@@ -23,11 +23,17 @@ public:
 	//create a static const identity matrix
 	static const Matrix3 identity;
 
-	// reference access so it can be modified
+	//reference access so it can be modified
 	Vector3& operator [] (int index);
 
-	// const access for read-only
+	//const access for read-only
 	const Vector3& operator [] (int index) const;
+
+	//adding matrices
+	Matrix3 operator + (const Matrix3& other) const;
+
+	//subtracting matrices
+	Matrix3 operator - (const Matrix3& other) const;
 
 	//binary * operator
 	Matrix3 operator * (const Matrix3& other) const;
@@ -42,13 +48,13 @@ public:
 	void SetScaled(float x, float y, float z);
 
 	//creating a scaled matrix passing a vector
-	//void SetScaled(const Vector3& v);
+	void SetScaled(const Vector3& other);
 
 	//applying scaling to an existing matrix
 	void Scale(float x, float y, float z);
 
 	//applying scaling to an existing matrix passing a vector
-	//void Scale(const Vector3& v);
+	void Scale(const Vector3& other);
 
 	//returns transposed matrix
 	Matrix3 Transposed() const;

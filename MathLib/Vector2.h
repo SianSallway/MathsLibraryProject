@@ -20,7 +20,6 @@ public:
 
 	operator const float*() const { return &x; };
 
-
 	//adding vectors
 	Vector2 operator + (const Vector2& other) const;
 
