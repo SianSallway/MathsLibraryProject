@@ -94,13 +94,13 @@ Vector4& Vector4::operator = (const Vector4& other)
 //computes magnitude of vector
 float Vector4::Magnitude() const
 {
-	return sqrt(x * x + y * y + z * z + w * w);
+	return sqrtf(x * x + y * y + z * z + w * w);
 }
 
 //Converts vector to unit length 
 void Vector4::Normalise()
 {
-	float magnitude = sqrt(x * x + y * y + z * z + w * w);
+	float magnitude = sqrtf(x * x + y * y + z * z + w * w);
 
 	x /= magnitude;
 	y /= magnitude;
@@ -110,7 +110,7 @@ void Vector4::Normalise()
 
 Vector4 Vector4::Normalised() const
 {
-	float mag = sqrt(x * x + y * y + z * z + w * w);
+	float mag = sqrtf(x * x + y * y + z * z + w * w);
 	return { x / mag, y / mag, z / mag, w / mag};
 }
 
@@ -140,5 +140,5 @@ float Vector4::AngleBetween(const Vector4& other) const
 	float dot = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
 
 	//return the angle between them
-	return acos(dot);
+	return acosf(dot);
 }

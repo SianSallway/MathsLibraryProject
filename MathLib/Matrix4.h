@@ -30,6 +30,11 @@ public:
 	// const access for read-only
 	const Vector4& operator [] (int index) const;
 
+	//adding matrices
+	Matrix4 operator + (const Matrix4& other) const;
+
+	Matrix4 operator - (const Matrix4& other) const;
+
 	//binary * operator
 	Matrix4 operator * (const Matrix4& other) const;
 
@@ -42,8 +47,14 @@ public:
 	//creating a scaled matrix
 	void SetScaled(float x, float y, float z);
 
+	//creating a scaled matrix passing a vector
+	void SetScaled(const Vector4& other);
+
 	//applying scaling to an existing matrix
 	void Scale(float x, float y, float z);
+
+	//applying scaling to an existing matrix passing a vector
+	void Scale(const Vector4& other);
 
 	//returns transposed matrix
 	Matrix4 Transposed() const;

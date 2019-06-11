@@ -35,7 +35,7 @@ Matrix3 Matrix3::operator + (const Matrix3& other) const
 
 	for (int r = 0; r < 3; ++r)
 	{
-		for (int c = 0; c < 3; ++r)
+		for (int c = 0; c < 3; ++c)
 		{
 			result.data[c][r] = (data[0][r] + other.data[c][0]) +
 				(data[1][r] + other.data[c][1]) +
@@ -53,7 +53,7 @@ Matrix3 Matrix3::operator - (const Matrix3& other) const
 
 	for (int r = 0; r < 3; ++r)
 	{
-		for (int c = 0; c < 3; ++r)
+		for (int c = 0; c < 3; ++c)
 		{
 			result.data[c][r] = (data[0][r] - other.data[c][0]) +
 				(data[1][r] - other.data[c][1]) +
@@ -71,7 +71,7 @@ Matrix3 Matrix3::operator * (const Matrix3& other) const
 
 	for (int r =0; r < 3; ++r)
 	{
-		for (int c = 0; c < 3; ++r)
+		for (int c = 0; c < 3; ++c)
 		{
 			result.data[c][r] = data[0][r] * other.data[c][0] +
 								data[1][r] * other.data[c][1] +

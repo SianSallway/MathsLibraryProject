@@ -36,7 +36,7 @@ Matrix4 Matrix4::operator + (const Matrix4& other) const
 
 	for (int r = 0; r < 4; ++r)
 	{
-		for (int c = 0; c < 4; ++r)
+		for (int c = 0; c < 4; ++c)
 		{
 			result.data[c][r] = (data[0][r] + other.data[c][0]) +
 				(data[1][r] + other.data[c][1]) +
@@ -55,7 +55,7 @@ Matrix4 Matrix4::operator - (const Matrix4& other) const
 
 	for (int r = 0; r < 4; ++r)
 	{
-		for (int c = 0; c < 4; ++r)
+		for (int c = 0; c < 4; ++c)
 		{
 			result.data[c][r] = (data[0][r] - other.data[c][0]) +
 				(data[1][r] - other.data[c][1]) +
@@ -86,7 +86,7 @@ Matrix4 Matrix4::operator * (const Matrix4& other) const
 
 	for (int r = 0; r < 4; ++r)
 	{
-		for (int c = 0; c < 4; ++r)
+		for (int c = 0; c < 4; ++c)
 		{
 			result.data[c][r] = data[0][r] * other.data[c][0] +
 								data[1][r] * other.data[c][1] +
