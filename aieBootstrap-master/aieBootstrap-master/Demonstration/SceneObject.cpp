@@ -1,7 +1,7 @@
 #include "SceneObject.h"
 #include <assert.h>
 #include <iostream>
-//current
+
 using namespace std;
 
 SceneObject::SceneObject()

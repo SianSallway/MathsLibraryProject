@@ -6,6 +6,7 @@
 #include"Circle.h"
 #include"Plane.h"
 #include "Vector2.h"
+#include"AABB.h"
 
 class DemonstrationApp : public aie::Application {
 public:
@@ -27,7 +28,8 @@ protected:
 	//SpriteObject tank;
 	//SpriteObject turret;
 	Circle circle;
-	Circle circle1;
+	Circle circle1;	
+	//AABB box;
 	//Plane plane;
 	Vector2 u;
 	Vector2 v;

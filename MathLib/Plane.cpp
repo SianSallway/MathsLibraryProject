@@ -68,7 +68,7 @@ int Plane::TestSide(const Vector2& p) const
 //returns where a circle is on plane depending on the result of the DistanceTo() method 
 int Plane::TestSide(const Circle& circle) const
 {
-	float t = DistanceTo(circle.center);
+	float t = DistanceTo(circle.position);
 
 	if (t < -circle.radius)
 	{

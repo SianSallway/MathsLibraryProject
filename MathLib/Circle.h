@@ -10,11 +10,13 @@ class Circle
 {
 public:
 	Circle();
-	Circle(const Vector2& p, float r) : center(p), radius(r) {}
+	Circle(const Vector2& p, float r, float s) : position(p), radius(r) {}
 	~Circle();
 
-	Vector2 center;
+	Vector2 position;					// position
+	Vector2 velocity = { 0.0f, 0.0f };
 	float radius;
+	//float speed;
 	Vector2 min;
 	Vector2 max;
 
@@ -33,6 +35,12 @@ public:
 
 	//finding the closest point to a circle from another point
 	Vector2 ClosestPoint(const Vector2& p);
+
+	//computes new velocity after collision
+	Vector2 NewVelocity(Circle& other);
+
+	//returns x and y coordinantes of collision
+	Vector2 GetCollisionPoints(Circle& other);
 
 };
 

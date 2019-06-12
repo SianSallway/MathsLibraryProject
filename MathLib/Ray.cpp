@@ -23,7 +23,7 @@ Vector2 Ray::ClosestPoint(const Vector2& point) const
 bool Ray::Intersects(const Circle& circle, Vector2* i, Vector2* r) const
 {
 	//calculates ray origin to circle center
-	auto l = circle.center - origin;
+	auto l = circle.position - origin;
 
 	//project circle center onto ray
 	float t = l.DotProduct(direction);
@@ -45,7 +45,7 @@ bool Ray::Intersects(const Circle& circle, Vector2* i, Vector2* r) const
 			if (r != nullptr)
 			{
 				//get surface normal at intersection point
-				auto N = ((origin + direction * t) - circle.center);
+				auto N = ((origin + direction * t) - circle.position);
 				N /= circle.radius;
 
 				//get penetration vector 
