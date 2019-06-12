@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Matrix3.h"
 #include <math.h>
+#include <iostream>
+
+using namespace std;
 
 Matrix3::Matrix3(float a11, float a12, float a13, float a21, float a22, float a23, float a31, float a32, float a33)
 {
@@ -159,9 +162,18 @@ Matrix3 Matrix3::Transposed() const
 }
 
 //matrix translation
-void Matrix3::Translate(float x, float y)
+Vector3 Matrix3::Translate(float _x, float _y)
 {
+	Vector3 t  = Vector3(_x, _y, 0.f);
 
+	Vector3 result;
+
+	result[0] = data[0][0] * t[0] + data[1][0] * t[1] + data[2][0] * t[2];
+	result[1] = data[0][1] * t[0] + data[1][1] * t[1] + data[2][1] * t[2];
+	result[2] = data[0][2] * t[0] + data[1][2] * t[1] + data[2][2] * t[2];
+
+	cout << result[0] << " "  << result[1] << endl;
+	return result;
 }
 
 //sets up a matrix to be rotated around the x axis

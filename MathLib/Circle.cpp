@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Circle.h"
 #include <math.h>
+#include <iostream>
+
+using namespace std;
 
 Circle::Circle()
 {

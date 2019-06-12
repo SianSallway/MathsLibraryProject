@@ -3,7 +3,10 @@
 #include "SceneObject.h"
 #include "Application.h"
 #include "Renderer2D.h"
-//current
+#include"Circle.h"
+#include"Plane.h"
+#include "Vector2.h"
+
 class DemonstrationApp : public aie::Application {
 public:
 
@@ -21,6 +24,11 @@ protected:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 
-	SpriteObject tank;
-	SpriteObject turret;
+	//SpriteObject tank;
+	//SpriteObject turret;
+	Circle circle;
+	Circle circle1;
+	//Plane plane;
+	Vector2 u;
+	Vector2 v;
 };

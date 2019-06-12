@@ -116,8 +116,6 @@ void SceneObject::Rotate(float radians)
 {
 	std::cout << radians << std::endl;
 
-
-
 	localTransform.RotateZ(radians);
 	UpdateTransform();
 }

@@ -56,6 +56,7 @@ protected:
 
 	Matrix3 localTransform = Matrix3::identity;
 	Matrix3 globalTransform = Matrix3::identity;
+	
 
 };
 

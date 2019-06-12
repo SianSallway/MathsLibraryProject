@@ -60,7 +60,7 @@ public:
 	Matrix3 Transposed() const;
 
 	//matrix translation
-	void Translate(float x, float y);
+	Vector3 Translate(float x, float y);
 
 	//sets up a matrix to be rotated around the x axis
 	void SetRotateX(float radians);
