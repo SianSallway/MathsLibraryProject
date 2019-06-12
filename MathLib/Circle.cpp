@@ -76,6 +76,16 @@ bool Circle::Overlaps(const AABB& box) const
 	return difference.DotProduct(difference) <= (radius * radius);
 }
 
+Vector2 Circle::Reflection(Circle& other) const
+{
+	float distance = position.Distance(other.position);
+
+	Vector2 N;
+
+	//tangent
+	Vector2 t = {N.x, -N.y};
+}
+
 //finding the closest point to a circle from another point
 Vector2 Circle::ClosestPoint(const Vector2& p)
 {

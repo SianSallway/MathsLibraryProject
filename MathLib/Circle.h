@@ -15,8 +15,8 @@ public:
 
 	Vector2 position;					// position
 	Vector2 velocity = { 0.0f, 0.0f };
+	Vector2 acceleration = { 0.0f, 0.0f };
 	float radius;
-	//float speed;
 	Vector2 min;
 	Vector2 max;
 
@@ -29,6 +29,8 @@ public:
 
 	//test for more than one circle overlaping
 	bool Overlaps(const Circle& other) const;
+
+	Vector2 Reflection(Circle& other) const;
 
 	//test for boxes and circles overlaping
 	bool Overlaps(const AABB& box) const;

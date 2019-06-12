@@ -20,8 +20,8 @@ bool DemonstrationApp::startup() {
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	//load the sprites
-	circle = Circle({500, 500}, 20, 200.f);
-	circle1 = Circle({800, 400}, 20, 0.f);
+	circle = Circle({500, 500}, 50, 200.f);
+	circle1 = Circle({800, 400}, 50, 0.f);
 
 	return true;
 }
@@ -37,12 +37,19 @@ void DemonstrationApp::update(float deltaTime) {
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	float speed = 200.f;
+	float speed = 150.f;
 
 	//rotate tank, using deltaTime as the rotation speed
 	if (input->wasKeyPressed(aie::INPUT_KEY_W))
 	{
 		circle.velocity = circle.velocity + Vector2(0, speed);
+		circle.acceleration.x = -circle.velocity.x * 0.8f;
+		circle.acceleration.y = -circle.velocity.y * 0.8f;
+
+		if (circle.velocity <= 0)
+		{
+			circle.velocity = Vector2(0, 0);
+		}
 	}
 	if (input->wasKeyPressed(aie::INPUT_KEY_D))
 	{
@@ -61,9 +68,8 @@ void DemonstrationApp::update(float deltaTime) {
 	{
 		cout << "contact w/ circle" << endl;
 		circle.GetCollisionPoints(circle1);
-		circle1.GetCollisionPoints(circle);
-		//circle.NewVelocity(circle1);
-		//circle1.NewVelocity(circle);
+		
+		
 	}
 
 	// go through all your circles
