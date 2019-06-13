@@ -39,6 +39,15 @@ Vector2& Vector2::operator -= (const Vector2& other)
 	return *this;
 }
 
+//adding vectors
+Vector2& Vector2::operator += (const Vector2& other)
+{
+	x += other.x;
+	y += other.y;
+
+	return *this;
+}
+
 //scaling a vector
 Vector2 Vector2::operator * (float scalar) const
 {

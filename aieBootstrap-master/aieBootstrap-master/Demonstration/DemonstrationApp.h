@@ -29,8 +29,11 @@ protected:
 	//SpriteObject turret;
 	Circle circle;
 	Circle circle1;	
-	//AABB box;
-	//Plane plane;
+	Circle circle2;
+	Circle circle3;
+	Circle circle4;
+	Circle circle5;
+	Circle circle6;
 	Vector2 u;
 	Vector2 v;
 };

@@ -29,6 +29,9 @@ public:
 	//subtracting vectors
 	Vector2& operator -= (const Vector2& other);
 
+	//adding vectors
+	Vector2& operator += (const Vector2& other);
+
 	//scaling a vector
 	Vector2 operator * (float scalar) const;
 	

@@ -10,13 +10,14 @@ class Circle
 {
 public:
 	Circle();
-	Circle(const Vector2& p, float r, float s) : position(p), radius(r) {}
+	Circle(const Vector2& p, float r, float m) : position(p), radius(r), mass(m) {}
 	~Circle();
 
 	Vector2 position;					// position
 	Vector2 velocity = { 0.0f, 0.0f };
 	Vector2 acceleration = { 0.0f, 0.0f };
 	float radius;
+	float mass;
 	Vector2 min;
 	Vector2 max;
 

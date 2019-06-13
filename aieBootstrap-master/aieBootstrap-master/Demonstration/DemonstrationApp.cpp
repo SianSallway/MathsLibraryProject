@@ -19,9 +19,15 @@ bool DemonstrationApp::startup() {
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
-	//load the sprites
-	circle = Circle({500, 500}, 50, 200.f);
-	circle1 = Circle({800, 400}, 50, 0.f);
+	//load the circles
+	circle = Circle({500, 500}, 50, 10);
+	circle1 = Circle({800, 400}, 50, 10);
+	circle2 = Circle({200, 100}, 50, 10);
+	circle3 = Circle({700, 800}, 50, 10);
+	circle4 = Circle({800, 100}, 50, 10);
+	circle5 = Circle({70, 800}, 50, 10);
+	circle6 = Circle({1000, 600}, 50, 10);
+
 
 	return true;
 }
@@ -43,13 +49,6 @@ void DemonstrationApp::update(float deltaTime) {
 	if (input->wasKeyPressed(aie::INPUT_KEY_W))
 	{
 		circle.velocity = circle.velocity + Vector2(0, speed);
-		circle.acceleration.x = -circle.velocity.x * 0.8f;
-		circle.acceleration.y = -circle.velocity.y * 0.8f;
-
-		if (circle.velocity <= 0)
-		{
-			circle.velocity = Vector2(0, 0);
-		}
 	}
 	if (input->wasKeyPressed(aie::INPUT_KEY_D))
 	{
@@ -68,8 +67,14 @@ void DemonstrationApp::update(float deltaTime) {
 	{
 		cout << "contact w/ circle" << endl;
 		circle.GetCollisionPoints(circle1);
-		
-		
+		//circle.velocity = circle.velocity + Vector2(-speed, 0);
+		circle.Reflection(circle1);
+		circle1.Reflection(circle);
+		/*circle.Reflection(circle2);
+		circle.Reflection(circle3);
+		circle.Reflection(circle4);
+		circle.Reflection(circle5);
+		circle.Reflection(circle6);*/
 	}
 
 	// go through all your circles
@@ -90,9 +95,16 @@ void DemonstrationApp::draw() {
 	m_2dRenderer->begin();
 	
 	//draw two circles
+	m_2dRenderer->setRenderColour(0, 0, 225, 1);
 	m_2dRenderer->drawCircle(circle.position.x, circle.position.y, circle.radius);
+	m_2dRenderer->setRenderColour(1, 1, 1, 1);
 	m_2dRenderer->drawCircle(circle1.position.x, circle1.position.y, circle1.radius);
-	
+	m_2dRenderer->drawCircle(circle2.position.x, circle2.position.y, circle2.radius);
+	m_2dRenderer->drawCircle(circle3.position.x, circle3.position.y, circle3.radius);
+	//m_2dRenderer->setRenderColour(0, 0, 225, 1);
+	m_2dRenderer->drawCircle(circle4.position.x, circle4.position.y, circle4.radius);
+	m_2dRenderer->drawCircle(circle5.position.x, circle5.position.y, circle5.radius);
+	m_2dRenderer->drawCircle(circle6.position.x, circle6.position.y, circle6.radius);
 
 	// output some text, uses the last used colour
 	m_2dRenderer->setRenderColour(1, 1, 1, 1);
