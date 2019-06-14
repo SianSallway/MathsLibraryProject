@@ -66,5 +66,10 @@ public:
 	Vector2 Max(const Vector2& a, const Vector2& b);
 	
 	Vector2 Clamp(const Vector2& t, const Vector2& a, const Vector2& b);
+
+	Vector2 Scale(const Vector2& v, float d);
+
+	//projects vector of circle onto another 
+	Vector2 ProjectVec(const Vector2& v1, const Vector2& v2);
 };
 

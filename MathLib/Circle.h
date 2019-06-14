@@ -31,7 +31,7 @@ public:
 	//test for more than one circle overlaping
 	bool Overlaps(const Circle& other) const;
 
-	Vector2 Reflection(Circle& other) const;
+	void Reflection(Circle& c1, Circle& other) const;
 
 	//test for boxes and circles overlaping
 	bool Overlaps(const AABB& box) const;

@@ -68,8 +68,7 @@ void DemonstrationApp::update(float deltaTime) {
 		cout << "contact w/ circle" << endl;
 		circle.GetCollisionPoints(circle1);
 		//circle.velocity = circle.velocity + Vector2(-speed, 0);
-		circle.Reflection(circle1);
-		circle1.Reflection(circle);
+		circle.Reflection(circle, circle1);
 		/*circle.Reflection(circle2);
 		circle.Reflection(circle3);
 		circle.Reflection(circle4);

@@ -75,7 +75,7 @@ Vector2& Vector2::operator = (const Vector2& other)
 //computes magnitude of vector
 float Vector2::Magnitude() const
 {
-	return sqrt(x * x + y * y);
+	return sqrtf(x * x + y * y);
 }
 
 //another way of computing magnitude of vector
@@ -87,7 +87,7 @@ float Vector2::MagnitudeSquared()const
 //Converts vector to unit length 
 void Vector2::Normalise()
 {
-	float magnitude = sqrt(x * x + y * y);
+	float magnitude = sqrtf(x * x + y * y);
 
 	x /= magnitude;
 	y /= magnitude;
@@ -95,7 +95,7 @@ void Vector2::Normalise()
 
 Vector2 Vector2::Normalised() const
 {
-	float mag = sqrt(x * x + y * y);
+	float mag = sqrtf(x * x + y * y);
 	return { x / mag, y / mag};
 }
 
@@ -111,7 +111,7 @@ float Vector2::Distance(const Vector2& other) const
 	float dX = x - other.x;
 	float dY = y - other.y;
 
-	return sqrt(dX * dX + dY * dY);
+	return sqrtf(dX * dX + dY * dY);
 }
 
 //returns the angle between two vectors 
@@ -125,7 +125,7 @@ float Vector2::AngleBetween(const Vector2& other) const
 	float dot = a.x * b.x + a.y * b.y;
 
 	//return the angle between them
-	return acos(dot);
+	return acosf(dot);
 }
 
 Vector2 Vector2::Min(const Vector2& a, const Vector2& b)
@@ -141,4 +141,24 @@ Vector2 Vector2::Max(const Vector2& a, const Vector2& b)
 Vector2 Vector2::Clamp(const Vector2& t, const Vector2& a, const Vector2& b)
 {
 	return Max(a, Min(b, t));
+}
+
+Vector2 Vector2::Scale(const Vector2& v, float d)
+{
+	Vector2 scaled;
+
+	scaled.x = v.x * d;
+	scaled.y = v.y * d;
+
+	return scaled;
+}
+
+//projects vector of circle onto another 
+Vector2 Vector2::ProjectVec(const Vector2& v1, const Vector2& v2)
+{
+	Vector2 proj;
+
+	proj = proj.Scale(v1, v1.DotProduct(v2) / v2.DotProduct(v1));
+
+	return proj;
 }
