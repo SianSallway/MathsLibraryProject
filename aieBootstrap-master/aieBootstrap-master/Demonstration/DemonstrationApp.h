@@ -25,8 +25,6 @@ protected:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 
-	//SpriteObject tank;
-	//SpriteObject turret;
 	Circle circle;
 	Circle circle1;	
 	Circle circle2;
@@ -34,6 +32,7 @@ protected:
 	Circle circle4;
 	Circle circle5;
 	Circle circle6;
-	Vector2 u;
-	Vector2 v;
+	Circle circle7;
+	Circle circle8;
+	Circle circle9;
 };

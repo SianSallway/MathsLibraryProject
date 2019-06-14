@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//handles the behaviour and properties of a circle object
 class Circle
 {
 public:
@@ -13,11 +14,10 @@ public:
 	Circle(const Vector2& p, float r, float m) : position(p), radius(r), mass(m) {}
 	~Circle();
 
-	Vector2 position;					// position
-	Vector2 velocity = { 0.0f, 0.0f };
-	Vector2 acceleration = { 0.0f, 0.0f };
-	float radius;
-	float mass;
+	Vector2 position;					//x and y position 
+	Vector2 velocity = { 0.0f, 0.0f };	//velocity 
+	float radius;						//size
+	float mass;							//mass
 	Vector2 min;
 	Vector2 max;
 
@@ -31,16 +31,14 @@ public:
 	//test for more than one circle overlaping
 	bool Overlaps(const Circle& other) const;
 
-	void Reflection(Circle& c1, Circle& other) const;
+	//calculates the collision reflection if two circles of the same mass collide 
+	void Reflection(Circle& c1, Circle& c2) const;
 
 	//test for boxes and circles overlaping
 	bool Overlaps(const AABB& box) const;
 
 	//finding the closest point to a circle from another point
 	Vector2 ClosestPoint(const Vector2& p);
-
-	//computes new velocity after collision
-	//Vector2 NewVelocity(Circle& other);
 
 	//returns x and y coordinantes of collision
 	Vector2 GetCollisionPoints(Circle& other);
