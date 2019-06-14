@@ -40,7 +40,7 @@ public:
 	Vector2 ClosestPoint(const Vector2& p);
 
 	//computes new velocity after collision
-	Vector2 NewVelocity(Circle& other);
+	//Vector2 NewVelocity(Circle& other);
 
 	//returns x and y coordinantes of collision
 	Vector2 GetCollisionPoints(Circle& other);

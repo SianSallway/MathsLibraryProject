@@ -154,11 +154,11 @@ Vector2 Vector2::Scale(const Vector2& v, float d)
 }
 
 //projects vector of circle onto another 
-Vector2 Vector2::ProjectVec(const Vector2& v1, const Vector2& v2)
+Vector2 Vector2::ProjectVec(const Vector2& _velocity, const Vector2& _normal)
 {
 	Vector2 proj;
 
-	proj = proj.Scale(v1, v1.DotProduct(v2) / v2.DotProduct(v1));
+	proj = proj.Scale(_normal, _velocity.DotProduct(_normal) );
 
 	return proj;
 }

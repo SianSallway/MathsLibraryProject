@@ -76,46 +76,58 @@ bool Circle::Overlaps(const AABB& box) const
 	return difference.DotProduct(difference) <= (radius * radius);
 }
 
-void Circle::Reflection(Circle& c1, Circle& other) const
+void Circle::Reflection(Circle& c1, Circle& c2) const
 {
 	//don't need tangent just velocity normal and collision normal
 	//old velocity becomes new velocity 
-	//stack overflow sphere collision
 
 	//distance between circles
-	float distance = c1.position.Distance(other.position);
+	float distance = c1.position.Distance(c2.position);
 
-	float cirOverlap = distance - c1.radius - other.radius;
+	//how much the circles are overlaping
+	float cirOverlap = distance - c1.radius - c2.radius;
 
-	//other.position = c1.position * (cirOverlap / 2);
+	//make sure circles are colliding on their edges rather than overlaping
+	Vector2 collisionN = c1.position - c2.position;
+	collisionN.Normalise();
+	//c1.position -= collisionN * (cirOverlap / 2);
+	//c2.position += collisionN * (cirOverlap / 2);
+
+	//Vector2 collisionN = c1.position - c2.position;
 
 	//Normal
-	Vector2 n = {(c1.position.x - other.position.x) / distance, (c1.position.y - other.position.y) / distance };
+	//Vector2 collisionN = {(c1.position.x - other.position.x) / distance, (c1.position.y - other.position.y) / distance };
 
-	//dot prod normal
-	float dotProdN = velocity.DotProduct(n);
+	Vector2 relativeVelocity = c1.velocity - c2.velocity;
+	
+	//dot prod of relative velocity
+	//float dotProdN = relativeVelocity.DotProduct(collisionN);
+
+	Vector2 projected = relativeVelocity.ProjectVec(relativeVelocity, collisionN);
+
+	//reflection
+	Vector2 ref = projected *2;
 
 	//velocity after collision
-	Vector2 newPos1 = { c1.position.x - other.position.x, c1.position.y - other.position.y };
+	/*Vector2 newPos1 = { c1.position.x - other.position.x, c1.position.y - other.position.y };
 	Vector2 newPos2 = { c1.position.y - other.position.y, c1.position.x - other.position.x };
 
-
 	Vector2 newVel1 = c1.velocity;
-	newVel1 += newVel1.ProjectVec(other.velocity, newPos1);
-	newVel1 -= newVel1.ProjectVec(c1.velocity, newPos2);
+	newVel1 += newVel1.ProjectVec(other.velocity, Vector2(c1.position.x - other.position.x, c1.position.y - other.position.y));
+	newVel1 -= newVel1.ProjectVec(c1.velocity, Vector2(c1.position.y - other.position.y, c1.position.x - other.position.x));
 
 	Vector2 newVel2 = other.velocity;
 	newVel2 += newVel2.ProjectVec(other.velocity, newPos1);
-	newVel2 -= newVel2.ProjectVec(c1.velocity, newPos2);
+	newVel2 -= newVel2.ProjectVec(c1.velocity, newPos2);*/
 
-	c1.velocity = newVel1;
-	other.velocity = newVel2;
+	c1.velocity -= ref;
+	c2.velocity += ref;
+
+	cout << "Velocity: " << c1.velocity << endl;
 
 	//float momentum = (dotProdN * (mass - other.mass) + 2.0f * other.mass * dotProdN) / (mass + other.mass);
 
-	//Vector2 velocity = Vector2{ (t.x * dotProdT) , (t.y * dotProdT)  };
-
-	
+	//Vector2 velocity = Vector2{ (t.x * dotProdT) , (t.y * dotProdT)  };	
 }
 
 //finding the closest point to a circle from another point
@@ -158,6 +170,7 @@ Vector2 Circle::GetCollisionPoints(Circle& other)
 	colPoint.y = ((position.y * other.radius) + (other.position.y  * radius)) / (radius + other.radius);
 
 	cout << "Collided at point: " << colPoint.x << " " << colPoint.y << endl;
+	
 
 	return colPoint;
 }

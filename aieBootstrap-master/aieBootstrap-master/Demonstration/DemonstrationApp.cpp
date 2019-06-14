@@ -43,7 +43,7 @@ void DemonstrationApp::update(float deltaTime) {
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	float speed = 150.f;
+	float speed = 100.f;
 
 	//rotate tank, using deltaTime as the rotation speed
 	if (input->wasKeyPressed(aie::INPUT_KEY_W))
@@ -67,13 +67,37 @@ void DemonstrationApp::update(float deltaTime) {
 	{
 		cout << "contact w/ circle" << endl;
 		circle.GetCollisionPoints(circle1);
-		//circle.velocity = circle.velocity + Vector2(-speed, 0);
 		circle.Reflection(circle, circle1);
-		/*circle.Reflection(circle2);
-		circle.Reflection(circle3);
-		circle.Reflection(circle4);
-		circle.Reflection(circle5);
-		circle.Reflection(circle6);*/
+	}
+	if (circle.Overlaps(circle2))
+	{
+		cout << "contact w/ circle" << endl;
+		circle.GetCollisionPoints(circle2);
+		circle.Reflection(circle, circle2);
+	}
+	if (circle.Overlaps(circle3))
+	{
+		cout << "contact w/ circle" << endl;
+		circle.GetCollisionPoints(circle3);
+		circle.Reflection(circle, circle3);
+	}
+	if (circle.Overlaps(circle4))
+	{
+		cout << "contact w/ circle" << endl;
+		circle.GetCollisionPoints(circle4);
+		circle.Reflection(circle, circle4);
+	}
+	if (circle.Overlaps(circle5))
+	{
+		cout << "contact w/ circle" << endl;
+		circle.GetCollisionPoints(circle5);
+		circle.Reflection(circle, circle5);
+	}
+	if (circle.Overlaps(circle6))
+	{
+		cout << "contact w/ circle" << endl;
+		circle.GetCollisionPoints(circle6);
+		circle.Reflection(circle, circle6);
 	}
 
 	// go through all your circles
