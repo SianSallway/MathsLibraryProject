@@ -10,10 +10,11 @@ using namespace std;
 class Circle
 {
 public:
-	Circle();
-	Circle(const Vector2& p, float r, float m) : position(p), radius(r), mass(m) {}
+	Circle() {};
+	Circle(const Vector2& p, float r, float m, vector<Circle> vector);
 	~Circle();
 
+	int id;
 	Vector2 position;					//x and y position 
 	Vector2 velocity = { 0.0f, 0.0f };	//velocity 
 	float radius;						//size

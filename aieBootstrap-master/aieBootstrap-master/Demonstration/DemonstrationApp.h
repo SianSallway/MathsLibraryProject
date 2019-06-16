@@ -7,6 +7,7 @@
 #include"Plane.h"
 #include "Vector2.h"
 #include"AABB.h"
+#include <vector>
 
 class DemonstrationApp : public aie::Application {
 public:
@@ -20,12 +21,20 @@ public:
 	virtual void update(float deltaTime);
 	virtual void draw();
 
+	//check if each circle has collided
+	void CheckBlueCollision();
+	void CheckC1Collision();
+	void CheckC2Collision();
+	void CheckC3Collision();
 protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 
-	Circle circle;
+	//stores all collidable and drawn circles on the screen
+	vector<Circle> circlesOnScreen; 
+
+	Circle circleControlled;
 	Circle circle1;	
 	Circle circle2;
 	Circle circle3;

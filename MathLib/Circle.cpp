@@ -2,11 +2,19 @@
 #include "Circle.h"
 #include <math.h>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-Circle::Circle()
+Circle::Circle(const Vector2& p, float r, float m, vector<Circle> vector)
 {
+	position = p; 
+	radius = r; 
+	mass = m;
+
+	id = vector.size();
+	
+	cout << "added to vector with the id of: " << id << endl;
 }
 
 Circle::~Circle()
