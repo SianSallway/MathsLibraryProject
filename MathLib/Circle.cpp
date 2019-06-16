@@ -6,15 +6,11 @@
 
 using namespace std;
 
-Circle::Circle(const Vector2& p, float r, float m, vector<Circle> vector)
+Circle::Circle(const Vector2& p, float r, float m)
 {
 	position = p; 
 	radius = r; 
 	mass = m;
-
-	id = vector.size();
-	
-	cout << "added to vector with the id of: " << id << endl;
 }
 
 Circle::~Circle()

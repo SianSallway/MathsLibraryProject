@@ -11,10 +11,9 @@ class Circle
 {
 public:
 	Circle() {};
-	Circle(const Vector2& p, float r, float m, vector<Circle> vector);
+	Circle(const Vector2& p, float r, float m);
 	~Circle();
 
-	int id;
 	Vector2 position;					//x and y position 
 	Vector2 velocity = { 0.0f, 0.0f };	//velocity 
 	float radius;						//size
