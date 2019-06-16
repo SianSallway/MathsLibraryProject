@@ -19,7 +19,7 @@ bool DemonstrationApp::startup() {
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
-	//load the circles
+	//load the circle objects to be used in the demonstration
 	circleControlled = Circle({1000, 500}, 50, 10);
 	circle1 = Circle({800, 400}, 50, 10);
 	circle2 = Circle({200, 100}, 50, 10);
@@ -45,8 +45,7 @@ void DemonstrationApp::shutdown() {
 	delete m_2dRenderer;
 }
 
-//check if each circle has collided
-void DemonstrationApp::CheckBlueCollision()
+void DemonstrationApp::CheckControlledCollision()
 {
 	//if the circle being controlled collides with another circle, calculate reflection
 	if (circleControlled.Overlaps(circle1))
@@ -763,7 +762,8 @@ void DemonstrationApp::update(float deltaTime) {
 		circleControlled.velocity = circleControlled.velocity + Vector2(-speed, 0);
 	}
 
-	CheckBlueCollision();
+	//calls the check collision functions once per frame
+	CheckControlledCollision();
 	CheckC1Collision();
 	CheckC2Collision();
 	CheckC3Collision();
@@ -778,8 +778,7 @@ void DemonstrationApp::update(float deltaTime) {
 	CheckC12Collision();
 	CheckC13Collision();
 
-	// go through all your circles
-	// on each one: add velocity vector * deltaTime to position (i.e. centre)
+	//updates the position of each circle object once per frame
 	circleControlled.position = circleControlled.position + circleControlled.velocity * deltaTime;
 	circle1.position = circle1.position + circle1.velocity * deltaTime;
 	circle2.position = circle2.position + circle2.velocity * deltaTime;
@@ -809,7 +808,7 @@ void DemonstrationApp::draw() {
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
-	//draw circles
+	//draws each circle object according to its specifications 
 	m_2dRenderer->setRenderColour(0, 0, 225, 1);
 	m_2dRenderer->drawCircle(circleControlled.position.x, circleControlled.position.y, circleControlled.radius);
 	m_2dRenderer->setRenderColour(1, 1, 1, 1);
@@ -829,7 +828,6 @@ void DemonstrationApp::draw() {
 	m_2dRenderer->drawCircle(circle14.position.x, circle14.position.y, circle14.radius);
 
 	// output some text, uses the last used colour
-	//m_2dRenderer->setRenderColour(1, 1, 1, 1);
 	m_2dRenderer->drawText(m_font, "Use full-screen", 10, 20);
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 10, 10);
 

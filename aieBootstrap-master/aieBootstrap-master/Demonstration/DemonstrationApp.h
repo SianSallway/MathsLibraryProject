@@ -4,11 +4,9 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include"Circle.h"
-#include"Plane.h"
 #include "Vector2.h"
-#include"AABB.h"
-#include <vector>
 
+//handles the drawing, properties and behaviour of the physics demonstration
 class DemonstrationApp : public aie::Application {
 public:
 
@@ -21,8 +19,9 @@ public:
 	virtual void update(float deltaTime);
 	virtual void draw();
 
-	//check if each circle has collided, the 14th circle doesn't need its own function as it is checked in all previous functions
-	void CheckBlueCollision();
+	//checking if each circle has collided using the Overlaps() function to trigger reflection and elastic collision
+	//the 14th circle doesn't need its own function as it is checked in all previous functions, I found if there were 'double ups' the reflection wouldn't be accurate
+	void CheckControlledCollision();
 	void CheckC1Collision();
 	void CheckC2Collision();
 	void CheckC3Collision();
@@ -42,8 +41,11 @@ protected:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 
-	Circle circleControlled;
-	Circle circle1;	
+	//circle object that the user can controlled and change the velocity of 
+	Circle circleControlled;	
+	
+	//circle objects that the circle controlled by the user can collide with and also collide with other circle objects in the scene
+	Circle circle1;				
 	Circle circle2;
 	Circle circle3;
 	Circle circle4;
