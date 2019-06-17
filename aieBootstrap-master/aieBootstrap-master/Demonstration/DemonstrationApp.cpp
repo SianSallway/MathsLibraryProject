@@ -17,24 +17,29 @@ bool DemonstrationApp::startup() {
 
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
-	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
+	m_font = new aie::Font("../../../../bin/font/consolas.ttf", 32);
 
 	//load the circle objects to be used in the demonstration
-	circleControlled = Circle({1000, 500}, 50, 10);
-	circle1 = Circle({800, 400}, 50, 10);
-	circle2 = Circle({200, 100}, 50, 10);
-	circle3 = Circle({700, 800}, 50, 10);
-	circle4 = Circle({800, 100}, 50, 10);
-	circle5 = Circle({70, 800}, 50, 10);
-	circle6 = Circle({1000, 800}, 50, 10);
-	circle7 = Circle({90, 300}, 50, 10);
-	circle8 = Circle({1500, 700}, 50, 10);
-	circle9 = Circle({1500, 200}, 50, 10);
-	circle10 = Circle({400, 550}, 50, 10);
-	circle11 = Circle({400, 900}, 50, 10);
-	circle12 = Circle({1700, 600}, 50, 10);
-	circle13 = Circle({1250, 450}, 50, 10);
-	circle14 = Circle({1800, 200}, 50, 10);
+	//tank.Load("./textures/Tank.png");
+	turret.Load("./textures/GunTurret.png");
+	circleControlled = CircleObject({1000, 500}, 50, 10);
+	circleControlled.AddChild(&turret);
+	circle1 = CircleObject({800, 400}, 50, 10);
+	circle2 = CircleObject({200, 100}, 50, 10);
+	circle3 = CircleObject({700, 800}, 50, 10);
+	circle4 = CircleObject({800, 100}, 50, 10);
+	circle5 = CircleObject({1300, 800}, 50, 10);
+	circle6 = CircleObject({1000, 800}, 50, 10);
+	circle7 = CircleObject({90, 300}, 50, 10);
+	circle8 = CircleObject({1500, 700}, 50, 10);
+	circle9 = CircleObject({1500, 200}, 50, 10);
+	circle10 = CircleObject({400, 550}, 50, 10);
+	circle11 = CircleObject({400, 900}, 50, 10);
+	circle12 = CircleObject({1100, 250}, 50, 10);
+	circle13 = CircleObject({1250, 450}, 50, 10);
+	circle14 = CircleObject({450, 250}, 50, 10);
+
+
 
 	return true;
 }
@@ -740,6 +745,21 @@ void DemonstrationApp::update(float deltaTime) {
 
 	float speed = 100.f;
 
+	circleControlled.Update(deltaTime);
+
+	/*//rotate the tanks turrett
+	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
+	{
+		turret.Rotate(deltaTime);
+	}
+	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
+	{
+		turret.Rotate(-deltaTime);
+	}*/
+
+	// Rotate turret
+	turret.Rotate(deltaTime);
+
 	//add and subtract circle speed from the circles velocity vector axis to create movement
 	if (input->wasKeyPressed(aie::INPUT_KEY_W))
 	{
@@ -779,21 +799,21 @@ void DemonstrationApp::update(float deltaTime) {
 	CheckC13Collision();
 
 	//updates the position of each circle object once per frame
-	circleControlled.position = circleControlled.position + circleControlled.velocity * deltaTime;
-	circle1.position = circle1.position + circle1.velocity * deltaTime;
-	circle2.position = circle2.position + circle2.velocity * deltaTime;
-	circle3.position = circle3.position + circle3.velocity * deltaTime;
-	circle4.position = circle4.position + circle4.velocity * deltaTime;
-	circle5.position = circle5.position + circle5.velocity * deltaTime;
-	circle6.position = circle6.position + circle6.velocity * deltaTime;
-	circle7.position = circle7.position + circle7.velocity * deltaTime;
-	circle8.position = circle8.position + circle8.velocity * deltaTime;
-	circle9.position = circle9.position + circle9.velocity * deltaTime;
-	circle10.position = circle10.position + circle10.velocity * deltaTime;
-	circle11.position = circle11.position + circle11.velocity * deltaTime;
-	circle12.position = circle12.position + circle12.velocity * deltaTime;
-	circle13.position = circle13.position + circle13.velocity * deltaTime;
-	circle14.position = circle14.position + circle14.velocity * deltaTime;
+	circleControlled.UpdatePosition(deltaTime);
+	circle1.UpdatePosition(deltaTime);
+	circle2.UpdatePosition(deltaTime);
+	circle3.UpdatePosition(deltaTime);
+	circle4.UpdatePosition(deltaTime);
+	circle5.UpdatePosition(deltaTime);
+	circle6.UpdatePosition(deltaTime);
+	circle7.UpdatePosition(deltaTime);
+	circle8.UpdatePosition(deltaTime);
+	circle9.UpdatePosition(deltaTime);
+	circle10.UpdatePosition(deltaTime);
+	circle11.UpdatePosition(deltaTime);
+	circle12.UpdatePosition(deltaTime);
+	circle13.UpdatePosition(deltaTime);
+	circle14.UpdatePosition(deltaTime);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
@@ -808,27 +828,34 @@ void DemonstrationApp::draw() {
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
-	//draws each circle object according to its specifications 
-	m_2dRenderer->setRenderColour(0, 0, 225, 1);
-	m_2dRenderer->drawCircle(circleControlled.position.x, circleControlled.position.y, circleControlled.radius);
+	//draw tank texture
+	//turret.Draw(m_2dRenderer);
+
+	//draws each circle object according to its specifications
+	m_2dRenderer->setRenderColour(0, 0, 255.0f, 1);
+	circleControlled.Draw(m_2dRenderer);
+
 	m_2dRenderer->setRenderColour(1, 1, 1, 1);
-	m_2dRenderer->drawCircle(circle1.position.x, circle1.position.y, circle1.radius);
-	m_2dRenderer->drawCircle(circle2.position.x, circle2.position.y, circle2.radius);
-	m_2dRenderer->drawCircle(circle3.position.x, circle3.position.y, circle3.radius);
-	m_2dRenderer->drawCircle(circle4.position.x, circle4.position.y, circle4.radius);
-	m_2dRenderer->drawCircle(circle5.position.x, circle5.position.y, circle5.radius);
-	m_2dRenderer->drawCircle(circle6.position.x, circle6.position.y, circle6.radius);
-	m_2dRenderer->drawCircle(circle7.position.x, circle7.position.y, circle7.radius);
-	m_2dRenderer->drawCircle(circle8.position.x, circle8.position.y, circle8.radius);
-	m_2dRenderer->drawCircle(circle9.position.x, circle9.position.y, circle9.radius);
-	m_2dRenderer->drawCircle(circle10.position.x, circle10.position.y, circle10.radius);
-	m_2dRenderer->drawCircle(circle11.position.x, circle11.position.y, circle11.radius);
-	m_2dRenderer->drawCircle(circle12.position.x, circle12.position.y, circle12.radius);
-	m_2dRenderer->drawCircle(circle13.position.x, circle13.position.y, circle13.radius);
-	m_2dRenderer->drawCircle(circle14.position.x, circle14.position.y, circle14.radius);
+	circle1.Draw(m_2dRenderer);
+	circle2.Draw(m_2dRenderer);
+	circle3.Draw(m_2dRenderer);
+	circle4.Draw(m_2dRenderer);
+	circle5.Draw(m_2dRenderer);
+	circle6.Draw(m_2dRenderer);
+	circle7.Draw(m_2dRenderer);
+	circle8.Draw(m_2dRenderer);
+	circle9.Draw(m_2dRenderer);
+	circle10.Draw(m_2dRenderer);
+	circle11.Draw(m_2dRenderer);
+	circle12.Draw(m_2dRenderer);
+	circle13.Draw(m_2dRenderer);
+	circle14.Draw(m_2dRenderer);
 
 	// output some text, uses the last used colour
-	m_2dRenderer->drawText(m_font, "Use full-screen", 10, 20);
+	//m_2dRenderer->drawText(m_font, "Use arrow keys to ", 10, 950);
+	//m_2dRenderer->drawText(m_font, "rotate turret", 10, 890);
+	m_2dRenderer->drawText(m_font, "Use WASD to move", 900, 555);
+	m_2dRenderer->drawText(m_font, "Use full-screen mode", 360, 10);
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 10, 10);
 
 	// done drawing sprites

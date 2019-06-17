@@ -3,7 +3,7 @@
 #include "SceneObject.h"
 #include "Application.h"
 #include "Renderer2D.h"
-#include"Circle.h"
+#include"CircleObject.h"
 #include "Vector2.h"
 
 //handles the drawing, properties and behaviour of the physics demonstration
@@ -42,22 +42,22 @@ protected:
 	aie::Font*			m_font;
 
 	//circle object that the user can controlled and change the velocity of 
-	Circle circleControlled;	
-	
-	//circle objects that the circle controlled by the user can collide with and also collide with other circle objects in the scene
-	Circle circle1;				
-	Circle circle2;
-	Circle circle3;
-	Circle circle4;
-	Circle circle5;
-	Circle circle6;
-	Circle circle7;
-	Circle circle8;
-	Circle circle9;
-	Circle circle10;
-	Circle circle11;
-	Circle circle12;
-	Circle circle13;
-	Circle circle14;
+	CircleObject circleControlled;
+	SpriteObject turret;
 
+	//circle objects that the circle controlled by the user can collide with and also collide with other circle objects in the scene
+	CircleObject circle1;
+	CircleObject circle2;
+	CircleObject circle3;
+	CircleObject circle4;
+	CircleObject circle5;
+	CircleObject circle6;
+	CircleObject circle7;
+	CircleObject circle8;
+	CircleObject circle9;
+	CircleObject circle10;
+	CircleObject circle11;
+	CircleObject circle12;
+	CircleObject circle13;
+	CircleObject circle14;
 };

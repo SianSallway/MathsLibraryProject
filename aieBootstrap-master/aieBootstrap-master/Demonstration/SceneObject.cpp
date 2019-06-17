@@ -1,6 +1,7 @@
 #include "SceneObject.h"
 #include <assert.h>
 #include <iostream>
+#include "Vector2.h"
 
 using namespace std;
 
@@ -114,7 +115,7 @@ void SceneObject::SetRotate(float radians)
 
 void SceneObject::Rotate(float radians)
 {
-	std::cout << radians << std::endl;
+	//std::cout << radians << std::endl;
 
 	localTransform.RotateZ(radians);
 	UpdateTransform();

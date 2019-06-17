@@ -161,19 +161,20 @@ Matrix3 Matrix3::Transposed() const
 	return result;
 }
 
-//matrix translation
-Vector3 Matrix3::Translate(float _x, float _y)
+// Creates a translation matrix based on x, y-
+void Matrix3::SetTranslate(float x, float y)
 {
-	Vector3 t  = Vector3(_x, _y, 0.f);
+	xAxis = { 1, 0, 0 };
+	yAxis = { 0, 1, 0 };
+	zAxis = { x, y, 1 };
+}
 
-	Vector3 result;
-
-	result[0] = data[0][0] * t[0] + data[1][0] * t[1] + data[2][0] * t[2];
-	result[1] = data[0][1] * t[0] + data[1][1] * t[1] + data[2][1] * t[2];
-	result[2] = data[0][2] * t[0] + data[1][2] * t[1] + data[2][2] * t[2];
-
-	cout << result[0] << " "  << result[1] << endl;
-	return result;
+//Moves this matrix by x, y
+void Matrix3::Translate(float x, float y)
+{
+	Matrix3 m;
+	m.SetTranslate(x, y);
+	*this = *this * m;
 }
 
 //sets up a matrix to be rotated around the x axis
